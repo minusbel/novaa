@@ -1,14 +1,6 @@
 {
-  "cSpell.words": [
-    "Breakroom",
-    "Copiable",
-    "Fredebel",
-    "Geico",
-    "Homebuyers",
-    "IBAN",
-    "Macbooks",
-    "notif",
-    "Playfair",
-    "Replenishments"
-  ]
+  "css.validate": false,
+  "edge-devtools.webhint": false,
+  "webhint.enable": false,
+  "cSpell.words": ["Copiable", "HYSA"]
 }
