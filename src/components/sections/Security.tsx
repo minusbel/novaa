@@ -3,7 +3,7 @@ import { Lock, Eye, Fingerprint, Bell } from 'lucide-react';
 
 export default function Security() {
   return (
-    <section className="py-24 bg-brand-light">
+    <section className="py-24 bg-brand-light dark:bg-brand-primary transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
@@ -28,8 +28,8 @@ export default function Security() {
                    <Lock size={24} />
                  </div>
                  <div>
-                   <p className="text-sm font-bold text-brand-primary">Bank-Grade</p>
-                   <p className="text-xs text-brand-secondary">256-bit Encryption</p>
+                   <p className="text-sm font-bold text-brand-primary dark:text-white transition-colors">Bank-Grade</p>
+                   <p className="text-xs text-brand-secondary dark:text-brand-light transition-colors">256-bit Encryption</p>
                  </div>
               </div>
             </motion.div>
@@ -43,7 +43,7 @@ export default function Security() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary mb-4">
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary dark:text-white transition-colors mb-4">
                 Security At Every Step
               </h2>
               <p className="text-brand-secondary/80 text-lg mb-10 leading-relaxed">
@@ -60,12 +60,12 @@ export default function Security() {
                   <motion.div 
                     key={i}
                     whileHover={{ scale: 1.02 }}
-                    className="bg-white p-6 rounded-2xl shadow-sm border border-brand-primary/5"
+                    className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-2xl shadow-sm border border-brand-primary/5"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-brand-light flex items-center justify-center text-brand-primary mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-brand-light dark:bg-brand-primary transition-colors flex items-center justify-center text-brand-primary dark:text-white transition-colors mb-4">
                       <item.icon size={24} />
                     </div>
-                    <h4 className="text-lg font-bold text-brand-primary mb-2">{item.title}</h4>
+                    <h4 className="text-lg font-bold text-brand-primary dark:text-white transition-colors mb-2">{item.title}</h4>
                     <p className="text-sm text-brand-secondary/70 leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}

@@ -3,7 +3,7 @@ import { Target, TrendingUp, Bell, CheckCircle2 } from 'lucide-react';
 
 export default function SmartMoney() {
   return (
-    <section className="py-24 bg-brand-muted overflow-hidden">
+    <section className="py-24 bg-brand-muted dark:bg-[#1a2533] transition-colors overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
@@ -14,7 +14,7 @@ export default function SmartMoney() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative p-8 md:p-12 bg-white rounded-[3rem] border border-brand-primary/5 shadow-inner"
+              className="relative p-8 md:p-12 bg-white dark:bg-brand-secondary transition-colors rounded-[3rem] border border-brand-primary/5 shadow-inner"
             >
               <h3 className="text-center font-display font-medium text-brand-secondary/60 mb-8 text-sm tracking-widest uppercase">Monthly Cash Flow</h3>
               
@@ -40,24 +40,24 @@ export default function SmartMoney() {
                   <div className="absolute top-64 w-8 h-8 rounded-bl-xl border-l-2 border-b-2 border-brand-primary/20 -left-[2px]"></div>
 
                   {/* Nodes */}
-                  <div className="col-span-2 bg-white p-4 rounded-xl shadow-sm border border-brand-primary/5 flex items-center justify-between">
-                     <span className="font-medium text-sm text-brand-primary flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-primary"></div> Housing & Utilities</span>
-                     <span className="font-semibold text-brand-secondary text-sm">$2,800</span>
+                  <div className="col-span-2 bg-white dark:bg-brand-secondary transition-colors p-4 rounded-xl shadow-sm border border-brand-primary/5 flex items-center justify-between">
+                     <span className="font-medium text-sm text-brand-primary dark:text-white transition-colors flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-primary"></div> Housing & Utilities</span>
+                     <span className="font-semibold text-brand-secondary dark:text-brand-light transition-colors text-sm">$2,800</span>
                   </div>
 
-                  <div className="col-span-2 bg-white p-4 rounded-xl shadow-sm border border-brand-accent/20 flex items-center justify-between">
-                     <span className="font-medium text-sm text-brand-primary flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-accent"></div> Auto-Savings</span>
+                  <div className="col-span-2 bg-white dark:bg-brand-secondary transition-colors p-4 rounded-xl shadow-sm border border-brand-accent/20 flex items-center justify-between">
+                     <span className="font-medium text-sm text-brand-primary dark:text-white transition-colors flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-accent"></div> Auto-Savings</span>
                      <span className="font-semibold text-brand-accent text-sm">$1,500</span>
                   </div>
 
-                  <div className="col-span-2 bg-white p-4 rounded-xl shadow-sm border border-brand-success/20 flex items-center justify-between">
-                     <span className="font-medium text-sm text-brand-primary flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-success"></div> Investments</span>
+                  <div className="col-span-2 bg-white dark:bg-brand-secondary transition-colors p-4 rounded-xl shadow-sm border border-brand-success/20 flex items-center justify-between">
+                     <span className="font-medium text-sm text-brand-primary dark:text-white transition-colors flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-success"></div> Investments</span>
                      <span className="font-semibold text-brand-success text-sm">$1,000</span>
                   </div>
 
-                  <div className="col-span-2 ml-8 bg-white p-4 rounded-xl shadow-sm border border-brand-primary/5 flex items-center justify-between">
-                     <span className="font-medium text-sm text-brand-primary flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-secondary"></div> Daily Spending</span>
-                     <span className="font-semibold text-brand-secondary text-sm">$3,150</span>
+                  <div className="col-span-2 ml-8 bg-white dark:bg-brand-secondary transition-colors p-4 rounded-xl shadow-sm border border-brand-primary/5 flex items-center justify-between">
+                     <span className="font-medium text-sm text-brand-primary dark:text-white transition-colors flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-brand-secondary"></div> Daily Spending</span>
+                     <span className="font-semibold text-brand-secondary dark:text-brand-light transition-colors text-sm">$3,150</span>
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@ export default function SmartMoney() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary mb-6">
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary dark:text-white transition-colors mb-6">
                 Automate Your <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-primary">Financial Success</span>
               </h2>
@@ -91,7 +91,7 @@ export default function SmartMoney() {
                       <CheckCircle2 size={20} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-brand-primary mb-1">{feature.title}</h4>
+                      <h4 className="text-xl font-bold text-brand-primary dark:text-white transition-colors mb-1">{feature.title}</h4>
                       <p className="text-brand-secondary/70 text-sm leading-relaxed">{feature.desc}</p>
                     </div>
                   </div>

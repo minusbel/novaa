@@ -30,7 +30,7 @@ export default function Loans() {
   ];
 
   return (
-    <section className="py-24 bg-brand-muted">
+    <section className="py-24 bg-brand-muted dark:bg-[#1a2533] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.div
@@ -38,7 +38,7 @@ export default function Loans() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary mb-6">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary dark:text-white transition-colors mb-6">
               Empower Your Ambitions
             </h2>
             <p className="text-lg text-brand-secondary/80">
@@ -55,12 +55,12 @@ export default function Loans() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white rounded-3xl p-8 border border-transparent hover:border-brand-primary/10 transition-colors group flex flex-col shadow-sm hover:shadow-md"
+              className="bg-white dark:bg-brand-secondary transition-colors rounded-3xl p-8 border border-transparent hover:border-brand-primary/10 transition-colors group flex flex-col shadow-sm hover:shadow-md"
             >
-              <div className="w-16 h-16 rounded-2xl bg-brand-muted shadow-sm flex items-center justify-center text-brand-primary mb-6">
+              <div className="w-16 h-16 rounded-2xl bg-brand-muted dark:bg-[#1a2533] transition-colors shadow-sm flex items-center justify-center text-brand-primary dark:text-white transition-colors mb-6">
                 <loan.icon size={32} />
               </div>
-              <h3 className="text-xl font-bold text-brand-primary mb-2">
+              <h3 className="text-xl font-bold text-brand-primary dark:text-white transition-colors mb-2">
                 {loan.title}
               </h3>
               <p className="text-brand-accent font-semibold mb-6">
@@ -76,7 +76,7 @@ export default function Loans() {
                 ))}
               </ul>
               
-              <button className="w-full py-3 rounded-xl bg-white text-brand-primary border border-brand-primary/10 font-medium hover:bg-brand-primary hover:text-white transition-colors flex justify-center items-center gap-2">
+              <button className="w-full py-3 rounded-xl bg-white dark:bg-brand-secondary transition-colors text-brand-primary dark:text-white transition-colors border border-brand-primary/10 font-medium hover:bg-brand-primary hover:text-white transition-colors flex justify-center items-center gap-2">
                 Apply Now <ArrowRight size={16} />
               </button>
             </motion.div>

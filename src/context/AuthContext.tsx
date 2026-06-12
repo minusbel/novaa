@@ -88,27 +88,27 @@ const INITIAL_CARDS: CardState[] = [
 
 const INITIAL_NOTIFICATIONS: BankNotification[] = [
   { id: 'notif-1', title: 'Operational Treasury Shift', message: 'Corporate Treasury Reserves account balance has climbed beyond current quarterly target, liquidity allocation recommended.', type: 'info', time: '2 hours ago', read: false },
-  { id: 'notif-2', title: 'Secure Access Validation', message: 'A standard webhook verified successful connection with NovaSecure API nodes for secure invoice generation.', type: 'success', time: '1 day ago', read: false },
-  { id: 'notif-3', title: 'Q2 Audit Compiled Statement', message: 'Federal corporate tax records and detailed Nova Finance fiscal account statements are ready for advisory review.', type: 'info', time: '2 days ago', read: true }
+  { id: 'notif-2', title: 'Secure Access Validation', message: 'A standard webhook verified successful connection with NovaaSecure API nodes for secure invoice generation.', type: 'success', time: '1 day ago', read: false },
+  { id: 'notif-3', title: 'Q2 Audit Compiled Statement', message: 'Federal corporate tax records and detailed Novaa fiscal account statements are ready for advisory review.', type: 'info', time: '2 days ago', read: true }
 ];
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<{ name: string; email: string } | null>(() => {
-    const saved = localStorage.getItem('nova_user');
+    const saved = localStorage.getItem('novaa_user');
     return saved ? JSON.parse(saved) : null;
   });
 
   const [accounts, setAccounts] = useState<BankAccount[]>(() => {
-    const saved = localStorage.getItem('nova_accounts');
+    const saved = localStorage.getItem('novaa_accounts');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
         const holdsOldBalance = parsed.some((acc: any) => acc.type === 'checking' && acc.balance < 1000000);
         if (holdsOldBalance) {
-          localStorage.removeItem('nova_accounts');
-          localStorage.removeItem('nova_transactions');
-          localStorage.removeItem('nova_cards');
-          localStorage.removeItem('nova_notifs');
+          localStorage.removeItem('novaa_accounts');
+          localStorage.removeItem('novaa_transactions');
+          localStorage.removeItem('novaa_cards');
+          localStorage.removeItem('novaa_notifs');
           return INITIAL_ACCOUNTS;
         }
         return parsed;
@@ -120,8 +120,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   });
 
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
-    const saved = localStorage.getItem('nova_transactions');
-    const accountsSaved = localStorage.getItem('nova_accounts');
+    const saved = localStorage.getItem('novaa_transactions');
+    const accountsSaved = localStorage.getItem('novaa_accounts');
     if (!accountsSaved) {
       return INITIAL_TRANSACTIONS;
     }
@@ -129,8 +129,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   });
 
   const [cards, setCards] = useState<CardState[]>(() => {
-    const saved = localStorage.getItem('nova_cards');
-    const accountsSaved = localStorage.getItem('nova_accounts');
+    const saved = localStorage.getItem('novaa_cards');
+    const accountsSaved = localStorage.getItem('novaa_accounts');
     if (!accountsSaved) {
       return INITIAL_CARDS;
     }
@@ -138,8 +138,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   });
 
   const [notifications, setNotifications] = useState<BankNotification[]>(() => {
-    const saved = localStorage.getItem('nova_notifs');
-    const accountsSaved = localStorage.getItem('nova_accounts');
+    const saved = localStorage.getItem('novaa_notifs');
+    const accountsSaved = localStorage.getItem('novaa_accounts');
     if (!accountsSaved) {
       return INITIAL_NOTIFICATIONS;
     }
@@ -151,24 +151,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   });
 
   useEffect(() => {
-    if (user) localStorage.setItem('nova_user', JSON.stringify(user));
-    else localStorage.removeItem('nova_user');
+    if (user) localStorage.setItem('novaa_user', JSON.stringify(user));
+    else localStorage.removeItem('novaa_user');
   }, [user]);
 
   useEffect(() => {
-    localStorage.setItem('nova_accounts', JSON.stringify(accounts));
+    localStorage.setItem('novaa_accounts', JSON.stringify(accounts));
   }, [accounts]);
 
   useEffect(() => {
-    localStorage.setItem('nova_transactions', JSON.stringify(transactions));
+    localStorage.setItem('novaa_transactions', JSON.stringify(transactions));
   }, [transactions]);
 
   useEffect(() => {
-    localStorage.setItem('nova_cards', JSON.stringify(cards));
+    localStorage.setItem('novaa_cards', JSON.stringify(cards));
   }, [cards]);
 
   useEffect(() => {
-    localStorage.setItem('nova_notifs', JSON.stringify(notifications));
+    localStorage.setItem('novaa_notifs', JSON.stringify(notifications));
   }, [notifications]);
 
   const login = (email: string, name: string) => {

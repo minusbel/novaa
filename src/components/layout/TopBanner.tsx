@@ -6,7 +6,7 @@ const WARNINGS_AND_PROMOS = [
   {
     type: 'fraud',
     icon: AlertTriangle,
-    text: 'FRAUD ALERT: Nova Finance will never ask for your password, PIN, or 2FA codes via phone, SMS, or email.',
+    text: 'FRAUD ALERT: Novaa will never ask for your password, PIN, or 2FA codes via phone, SMS, or email.',
     color: 'text-amber-400',
   },
   {

@@ -24,7 +24,7 @@ export default function Resources() {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white dark:bg-brand-secondary transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -32,9 +32,9 @@ export default function Resources() {
             <div className="flex items-center gap-2 text-brand-accent font-semibold mb-4 text-sm tracking-wide uppercase">
               <BookOpen size={18} /> Financial Education
             </div>
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary">Latest Resources</h2>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary dark:text-white transition-colors">Latest Resources</h2>
           </div>
-          <button className="text-brand-primary font-medium hover:text-brand-accent transition-colors flex items-center gap-2 pb-2">
+          <button className="text-brand-primary dark:text-white transition-colors font-medium hover:text-brand-accent transition-colors flex items-center gap-2 pb-2">
             View All Articles <ArrowRight size={18} />
           </button>
         </div>
@@ -57,13 +57,13 @@ export default function Resources() {
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-4 left-4 z-20">
-                  <span className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-brand-primary shadow-sm">
+                  <span className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-brand-primary dark:text-white transition-colors shadow-sm">
                     {article.category}
                   </span>
                 </div>
               </div>
               
-              <h3 className="text-xl font-bold text-brand-primary mb-3 group-hover:text-brand-accent transition-colors">
+              <h3 className="text-xl font-bold text-brand-primary dark:text-white transition-colors mb-3 group-hover:text-brand-accent transition-colors">
                 {article.title}
               </h3>
               <p className="text-brand-secondary/80 text-sm leading-relaxed mb-4 flex-grow">

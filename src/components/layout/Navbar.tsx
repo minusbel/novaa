@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Landmark } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import TopBanner from './TopBanner';
+import NovaaLogo from '../NovaaLogo';
+import ThemeToggle from '../ThemeToggle';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,13 +50,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-sm bg-brand-accent flex items-center justify-center">
-                <Landmark size={16} className="text-white" />
-              </div>
-              <span className="font-display font-semibold text-lg tracking-tight text-white">
-                Nova<span className="text-brand-accent">Finance</span>
-              </span>
+            <Link to="/" className="flex items-center group">
+              <NovaaLogo className="text-xl text-white" iconSize={24} />
             </Link>
 
             {/* Desktop Nav */}
@@ -110,16 +107,22 @@ export default function Navbar() {
                   </Link>
                 </>
               )}
+              <div className="ml-2 pl-2 border-l border-white/10 flex items-center">
+                <ThemeToggle className="text-white hover:bg-white/10" />
+              </div>
             </div>
 
-            {/* Mobile Toggle */}
-            <button
+            {/* Mobile Toggle & Theme */}
+            <div className="md:hidden flex items-center gap-2">
+              <ThemeToggle className="text-white hover:bg-white/10" />
+              <button
               className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation"
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
+            </div>
           </div>
         </div>
 

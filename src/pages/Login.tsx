@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useAuth } from '../context/AuthContext';
-import { ShieldCheck, Lock, Mail, User, Landmark, HelpCircle, Check, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Lock, Mail, User, Landmark, HelpCircle, Check, AlertCircle, UserCheck } from 'lucide-react';
+import NovaaLogo from '../components/NovaaLogo';
 
 export default function Login() {
   const { login, isLoggedIn } = useAuth();
@@ -65,7 +66,7 @@ export default function Login() {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=1200&auto=format&fit=crop" 
-            alt="Nova Security Base" 
+            alt="Novaa Security Base" 
             className="w-full h-full object-cover mix-blend-overlay opacity-20 grayscale"
           />
           <div className="absolute inset-0 bg-brand-navy/90 border-r border-brand-accent/20"></div>
@@ -74,12 +75,7 @@ export default function Login() {
         {/* Content */}
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-16">
-            <div className="w-9 h-9 rounded-xl bg-brand-secondary flex items-center justify-center text-brand-accent border border-brand-accent/20">
-              <Landmark size={20} />
-            </div>
-            <span className="font-display font-bold text-xl tracking-tight">
-              Nova<span className="text-brand-accent">Finance</span>
-            </span>
+            <NovaaLogo className="text-3xl text-white" iconSize={36} />
           </div>
 
           <motion.div
@@ -110,7 +106,7 @@ export default function Login() {
             </div>
           </div>
           <p className="text-xs text-brand-light/40">
-            © 2026 Nova Finance Inc. All rights reserved. Member FDIC. Equal Housing Lender.
+            © 2026 Novaa Inc. All rights reserved. Member FDIC. Equal Housing Lender.
           </p>
         </div>
       </div>
@@ -122,7 +118,7 @@ export default function Login() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
           </span>
-          NovaSecure Server Online
+          NovaaSecure Server Online
         </div>
 
         <motion.div 
@@ -133,13 +129,8 @@ export default function Login() {
         >
           {/* Mobile logo and header */}
           <div className="text-center lg:text-left">
-            <div className="flex justify-center lg:justify-start items-center gap-2 mb-6 lg:hidden">
-              <div className="w-10 h-10 rounded-xl bg-brand-primary flex items-center justify-center text-white border border-brand-accent/20">
-                <Landmark size={22} className="text-brand-accent" />
-              </div>
-              <span className="font-display font-bold text-2xl tracking-tight text-white">
-                Nova<span className="text-brand-accent">Finance</span>
-              </span>
+            <div className="flex justify-center lg:justify-start items-center mb-6 lg:hidden">
+              <NovaaLogo className="text-3xl text-white" iconSize={36} />
             </div>
 
             <h1 className="text-3xl font-display font-bold text-white tracking-tight">
@@ -235,7 +226,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-4 rounded-xl bg-brand-accent text-brand-primary font-bold hover:bg-brand-accent/90 transition-all shrink-0 shadow-lg shadow-brand-accent/15 flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-xl bg-brand-accent text-brand-primary dark:text-white transition-colors font-bold hover:bg-brand-accent/90 transition-all shrink-0 shadow-lg shadow-brand-accent/15 flex items-center justify-center gap-2"
             >
               {isLoading ? (
                 <>

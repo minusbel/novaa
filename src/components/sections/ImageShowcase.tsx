@@ -2,10 +2,10 @@ import { motion } from 'motion/react';
 
 export default function ImageShowcase() {
   return (
-    <section className="py-24 bg-brand-light">
+    <section className="py-24 bg-brand-light dark:bg-brand-primary transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary mb-6">
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary dark:text-white transition-colors mb-6">
             Banking For <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-primary">Every Stage</span>
           </h2>
           <p className="text-lg text-brand-secondary/80 max-w-2xl mx-auto">

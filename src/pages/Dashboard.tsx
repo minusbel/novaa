@@ -44,8 +44,10 @@ import {
   ShieldCheck,
   Eye,
   EyeOff,
-  Menu,
+  Menu
 } from "lucide-react";
+import NovaaLogo from '../components/NovaaLogo';
+import ThemeToggle from '../components/ThemeToggle';
 
 // Monthly interactive points for the adjustable chart
 interface ChartDataPoint {
@@ -282,7 +284,7 @@ export default function Dashboard() {
   >([
     {
       sender: "assistant",
-      text: `Hello ${user?.name || "Client"}. I am your NovaSecure Chat Assistant. How may I assist you with transfers, checking statements, or security issues today?`,
+      text: `Hello ${user?.name || "Client"}. I am your NovaaSecure Chat Assistant. How may I assist you with transfers, checking statements, or security issues today?`,
       time: "Now",
     },
   ]);
@@ -301,7 +303,7 @@ export default function Dashboard() {
     setIsGeneratingChat(true);
     setTimeout(() => {
       let reply =
-        "Your request has been filed with Nova Premium Support. A registered personal wealth advisor will call your verified number shortly.";
+        "Your request has been filed with Novaa Premium Support. A registered personal wealth advisor will call your verified number shortly.";
       const query = userMsg.toLowerCase();
       if (query.includes("transfer") || query.includes("pay")) {
         reply =
@@ -419,7 +421,7 @@ export default function Dashboard() {
     if (!isNaN(amt) && amt > 0) {
       const tgt = accounts.find((a) => a.id === sandboxAccount);
       if (tgt) {
-        addFunds(sandboxAccount, amt, "NovaSecure Sandbox Deposit");
+        addFunds(sandboxAccount, amt, "NovaaSecure Sandbox Deposit");
         alert(`Success! Deposited $${amt.toLocaleString()} into ${tgt.name}.`);
       }
     }
@@ -451,7 +453,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-light text-brand-primary flex flex-col">
+    <div className="min-h-screen bg-brand-light dark:bg-brand-primary transition-colors text-brand-primary dark:text-white transition-colors flex flex-col">
       {/* Dynamic Sub-header Info Alert Strip */}
       <div className="bg-brand-primary border-b border-white/8 px-4 py-2 text-xs flex flex-wrap justify-between items-center gap-2 relative z-20">
         <div className="flex items-center gap-2">
@@ -518,9 +520,7 @@ export default function Dashboard() {
         >
           {/* Mobile Sidebar Header */}
           <div className="p-4 flex items-center justify-between lg:hidden border-b border-white/8">
-            <span className="font-display font-semibold text-lg tracking-tight text-white">
-              Nova<span className="text-brand-accent">Finance</span>
-            </span>
+            <NovaaLogo className="text-xl text-white" iconSize={24} />
             <button
               type="button"
               onClick={() => setMobileSidebarOpen(false)}
@@ -610,16 +610,17 @@ export default function Dashboard() {
               <span className="text-[10px] font-medium text-brand-accent uppercase tracking-[3px] block">
                 Operational Portal
               </span>
-              <h2 className="text-2xl sm:text-3xl font-display font-semibold text-brand-primary">
+              <h2 className="text-2xl sm:text-3xl font-display font-semibold text-brand-primary dark:text-white transition-colors">
                 Welcome back, {user.name}
               </h2>
             </div>
 
             <div className="flex items-center gap-3 self-stretch sm:self-auto relative">
+              <ThemeToggle className="text-brand-primary dark:text-white transition-colors dark:text-brand-light hover:bg-brand-muted dark:hover:bg-brand-secondary" />
               <div className="relative">
                 <button
                   onClick={() => setShowNotifications(!showNotifications)}
-                  className="p-2.5 bg-white rounded-lg border border-brand-dark hover:bg-brand-muted transition-all relative"
+                  className="p-2.5 bg-white dark:bg-brand-secondary transition-colors rounded-lg border border-brand-dark dark:border-white/10 transition-colors hover:bg-brand-muted transition-all relative"
                 >
                   <Bell size={18} className="text-brand-primary/60" />
                   {unreadCount > 0 && (
@@ -721,7 +722,7 @@ export default function Dashboard() {
               </div>
 
               {/* Quick Simulator Switch */}
-              <div className="hidden sm:flex p-1 bg-brand-muted rounded-lg border border-brand-dark text-[10px] font-medium">
+              <div className="hidden sm:flex p-1 bg-brand-muted dark:bg-[#1a2533] transition-colors rounded-lg border border-brand-dark dark:border-white/10 transition-colors text-[10px] font-medium">
                 <span className="px-2 py-1 bg-brand-accent/10 border border-brand-accent/20 text-brand-accent rounded-sm">
                   Sandbox
                 </span>
@@ -799,7 +800,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Vault Actions and Quick Check deposit */}
-                  <div className="bg-white p-6 rounded-xl border border-brand-dark flex flex-col justify-between">
+                  <div className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors flex flex-col justify-between">
                     <div>
                       <h4 className="font-bold text-xs uppercase tracking-widest text-brand-accent mb-3">
                         Instant Check Deposit (Sandbox)
@@ -820,7 +821,7 @@ export default function Dashboard() {
                               onChange={(e) =>
                                 setSandboxAccount(e.target.value)
                               }
-                              className="w-full text-xs font-mono bg-brand-muted p-2 rounded-lg border border-brand-dark text-brand-primary focus:outline-none focus:border-brand-accent"
+                              className="w-full text-xs font-mono bg-brand-muted dark:bg-[#1a2533] transition-colors p-2 rounded-lg border border-brand-dark dark:border-white/10 transition-colors text-brand-primary dark:text-white transition-colors focus:outline-none focus:border-brand-accent"
                             >
                               {accounts.map((acc) => (
                                 <option key={acc.id} value={acc.id}>
@@ -839,7 +840,7 @@ export default function Dashboard() {
                               title="Check deposit amount"
                               placeholder="5000"
                               onChange={(e) => setSandboxAmount(e.target.value)}
-                              className="w-full text-xs bg-brand-muted p-2 border border-brand-dark rounded-lg text-brand-primary focus:outline-none focus:border-brand-accent font-mono"
+                              className="w-full text-xs bg-brand-muted dark:bg-[#1a2533] transition-colors p-2 border border-brand-dark dark:border-white/10 transition-colors rounded-lg text-brand-primary dark:text-white transition-colors focus:outline-none focus:border-brand-accent font-mono"
                             />
                           </div>
                         </div>
@@ -866,7 +867,7 @@ export default function Dashboard() {
                       return (
                         <div
                           key={acc.id}
-                          className="bg-white p-5 rounded-lg border border-brand-dark hover:border-brand-accent transition-all shadow-sm flex flex-col justify-between"
+                          className="bg-white dark:bg-brand-secondary transition-colors p-5 rounded-lg border border-brand-dark dark:border-white/10 transition-colors hover:border-brand-accent transition-all shadow-sm flex flex-col justify-between"
                         >
                           <div>
                             <div className="flex justify-between items-start mb-2">
@@ -877,7 +878,7 @@ export default function Dashboard() {
                                 {acc.accountNo}
                               </span>
                             </div>
-                            <h5 className="font-bold text-brand-primary text-sm tracking-tight">
+                            <h5 className="font-bold text-brand-primary dark:text-white transition-colors text-sm tracking-tight">
                               {acc.name}
                             </h5>
                           </div>
@@ -901,7 +902,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* 2. ADJUSTABLE INTERACTIVE CHART (HIGH PRIORITY WRITTEN REQUIREMENTS) */}
-                <div className="bg-white p-6 rounded-xl border border-brand-dark shadow-sm">
+                <div className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm">
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                     <div>
                       <div className="flex items-center gap-2">
@@ -918,7 +919,7 @@ export default function Dashboard() {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-2 text-xs font-mono bg-brand-muted px-3 py-1.5 rounded-xl border border-brand-dark">
+                    <div className="flex items-center gap-2 text-xs font-mono bg-brand-muted dark:bg-[#1a2533] transition-colors px-3 py-1.5 rounded-xl border border-brand-dark dark:border-white/10 transition-colors">
                       <Calendar size={14} className="text-brand-accent" />
                       <span>
                         Viewing Month: <strong>June 2026</strong>
@@ -1046,7 +1047,7 @@ export default function Dashboard() {
                         onChange={(e) =>
                           setChartPointerIndex(parseInt(e.target.value))
                         }
-                        className="w-full h-2 bg-brand-muted rounded-lg appearance-none cursor-pointer accent-brand-accent border border-brand-dark"
+                        className="w-full h-2 bg-brand-muted dark:bg-[#1a2533] transition-colors rounded-lg appearance-none cursor-pointer accent-brand-accent border border-brand-dark dark:border-white/10 transition-colors"
                       />
                       <div className="flex justify-between text-[10px] text-brand-primary/50 font-mono mt-2">
                         <span>June 1st</span>
@@ -1058,12 +1059,12 @@ export default function Dashboard() {
                     </div>
 
                     {/* Detailed Interactive Indicator Box plotted contextual updates */}
-                    <div className="p-4 rounded-lg bg-brand-muted border border-brand-dark grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div className="p-4 rounded-lg bg-brand-muted dark:bg-[#1a2533] transition-colors border border-brand-dark dark:border-white/10 transition-colors grid grid-cols-1 md:grid-cols-4 gap-4">
                       <div className="border-b md:border-b-0 md:border-r border-brand-dark/30 pb-2 md:pb-0">
                         <span className="text-[10px] tracking-widest text-brand-primary/60 font-bold uppercase block">
                           Timeline Date
                         </span>
-                        <p className="text-lg font-bold text-brand-primary mt-1 flex items-center gap-2">
+                        <p className="text-lg font-bold text-brand-primary dark:text-white transition-colors mt-1 flex items-center gap-2">
                           <Calendar size={16} className="text-brand-accent" />
                           {selectedChartPoint.dateStr}, 2026
                         </p>
@@ -1102,7 +1103,7 @@ export default function Dashboard() {
                           <span className="w-1.5 h-1.5 rounded-full bg-brand-accent shrink-0"></span>
                           {selectedChartPoint.event}
                         </p>
-                        <span className="text-[9px] bg-brand-secondary/30 border border-brand-dark text-brand-primary px-1.5 py-0.5 rounded font-mono mt-1 inline-block uppercase font-bold">
+                        <span className="text-[9px] bg-brand-secondary/30 border border-brand-dark dark:border-white/10 transition-colors text-brand-primary dark:text-white transition-colors px-1.5 py-0.5 rounded font-mono mt-1 inline-block uppercase font-bold">
                           {selectedChartPoint.eventCategory}
                         </span>
                       </div>
@@ -1115,7 +1116,7 @@ export default function Dashboard() {
                   {/* Quick Action desks (6 Columns) */}
                   <div className="lg:col-span-5 space-y-6">
                     {/* Goal Progress Tracker widget */}
-                    <div className="bg-white p-5 rounded-xl border border-brand-dark shadow-sm">
+                    <div className="bg-white dark:bg-brand-secondary transition-colors p-5 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm">
                       <div className="flex justify-between items-center mb-3">
                         <h4 className="font-bold text-xs uppercase tracking-wider text-brand-accent flex items-center gap-2">
                           <PiggyBank size={15} />
@@ -1128,11 +1129,11 @@ export default function Dashboard() {
                           % Locked
                         </span>
                       </div>
-                      <p className="text-[11px] text-brand-primary font-semibold">
+                      <p className="text-[11px] text-brand-primary dark:text-white transition-colors font-semibold">
                         {savingsGoal.name}
                       </p>
 
-                      <div className="w-full bg-brand-muted h-2.5 rounded-full mt-3 overflow-hidden border border-brand-dark">
+                      <div className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors h-2.5 rounded-full mt-3 overflow-hidden border border-brand-dark dark:border-white/10 transition-colors">
                         <div
                           className={`bg-brand-accent h-full rounded-full transition-all duration-500 ${getSavingsProgressWidthClass(savingsGoal.current, savingsGoal.target)}`}
                         />
@@ -1151,7 +1152,7 @@ export default function Dashboard() {
                           <p className="text-[10px] text-brand-primary/50">
                             Target Amount
                           </p>
-                          <p className="font-bold text-brand-primary font-mono">
+                          <p className="font-bold text-brand-primary dark:text-white transition-colors font-mono">
                             ${savingsGoal.target.toLocaleString()}
                           </p>
                         </div>
@@ -1159,7 +1160,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* Quick Transfer panel */}
-                    <div className="bg-white p-5 rounded-xl border border-brand-dark shadow-sm space-y-4">
+                    <div className="bg-white dark:bg-brand-secondary transition-colors p-5 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm space-y-4">
                       <h4 className="font-bold text-xs uppercase tracking-wider text-brand-accent flex items-center gap-2">
                         <ArrowRightLeft size={15} />
                         <span>Instant Funds Transfer desk</span>
@@ -1198,7 +1199,7 @@ export default function Dashboard() {
                               id="transferFrom"
                               value={transferFrom}
                               onChange={(e) => setTransferFrom(e.target.value)}
-                              className="w-full bg-brand-muted p-2 rounded-xl border border-brand-dark text-xs text-brand-primary focus:outline-none"
+                              className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-2 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none"
                             >
                               {accounts.map((acc) => (
                                 <option key={acc.id} value={acc.id}>
@@ -1218,7 +1219,7 @@ export default function Dashboard() {
                               id="transferTo"
                               value={transferTo}
                               onChange={(e) => setTransferTo(e.target.value)}
-                              className="w-full bg-brand-muted p-2 rounded-xl border border-brand-dark text-xs text-brand-primary focus:outline-none"
+                              className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-2 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none"
                             >
                               <option value="">-- Choose Recipient --</option>
                               <option value="High-Yield Savings">
@@ -1250,7 +1251,7 @@ export default function Dashboard() {
                               onChange={(e) =>
                                 setTransferAmount(e.target.value)
                               }
-                              className="w-full bg-brand-muted p-2 rounded-xl border border-brand-dark text-xs text-brand-primary font-mono focus:outline-none"
+                              className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-2 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors font-mono focus:outline-none"
                             />
                           </div>
                           <div>
@@ -1262,7 +1263,7 @@ export default function Dashboard() {
                               placeholder="e.g. rent, groceries"
                               value={transferMemo}
                               onChange={(e) => setTransferMemo(e.target.value)}
-                              className="w-full bg-brand-muted p-2 rounded-xl border border-brand-dark text-xs text-brand-primary focus:outline-none"
+                              className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-2 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none"
                             />
                           </div>
                         </div>
@@ -1278,7 +1279,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Recent Transactions List (7 Columns) */}
-                  <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-brand-dark shadow-sm flex flex-col justify-between">
+                  <div className="lg:col-span-7 bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm flex flex-col justify-between">
                     <div>
                       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                         <h4 className="font-bold text-xs uppercase tracking-wider text-brand-accent">
@@ -1295,7 +1296,7 @@ export default function Dashboard() {
                                 className={`px-2.5 py-1 rounded-lg text-[10px] uppercase font-bold tracking-wider transition-all cursor-pointer ${
                                   txFilter === filterVal
                                     ? "bg-brand-accent text-white"
-                                    : "bg-brand-muted text-brand-primary border border-brand-dark/50 hover:bg-brand-secondary/25"
+                                    : "bg-brand-muted dark:bg-[#1a2533] transition-colors text-brand-primary dark:text-white transition-colors border border-brand-dark/50 hover:bg-brand-secondary/25"
                                 }`}
                               >
                                 {filterVal}
@@ -1315,7 +1316,7 @@ export default function Dashboard() {
                           placeholder="Search transactions by category or keyword..."
                           value={txSearch}
                           onChange={(e) => setTxSearch(e.target.value)}
-                          className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-brand-muted border border-brand-dark text-xs text-brand-primary focus:outline-none focus:border-brand-accent/60"
+                          className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-brand-muted dark:bg-[#1a2533] transition-colors border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none focus:border-brand-accent/60"
                         />
                       </div>
 
@@ -1331,7 +1332,7 @@ export default function Dashboard() {
                             return (
                               <div
                                 key={tx.id}
-                                className="p-3 bg-brand-muted rounded-xl border border-brand-dark/65 flex justify-between items-center text-xs hover:border-brand-accent/40 transition-all"
+                                className="p-3 bg-brand-muted dark:bg-[#1a2533] transition-colors rounded-xl border border-brand-dark/65 flex justify-between items-center text-xs hover:border-brand-accent/40 transition-all"
                               >
                                 <div className="flex items-center gap-3">
                                   <div
@@ -1349,7 +1350,7 @@ export default function Dashboard() {
                                   </div>
                                   <div>
                                     <div className="flex items-center gap-2">
-                                      <p className="font-bold text-brand-primary">
+                                      <p className="font-bold text-brand-primary dark:text-white transition-colors">
                                         {tx.description}
                                       </p>
                                       {tx.status === "pending" && (
@@ -1412,7 +1413,7 @@ export default function Dashboard() {
                 className="space-y-6"
               >
                 <div className="space-y-1">
-                  <h3 className="text-xl font-display font-semibold text-brand-primary">
+                  <h3 className="text-xl font-display font-semibold text-brand-primary dark:text-white transition-colors">
                     Secure asset accounts
                   </h3>
                   <p className="text-xs text-brand-primary/80">
@@ -1427,15 +1428,15 @@ export default function Dashboard() {
                     return (
                       <div
                         key={acc.id}
-                        className="bg-white p-6 rounded-xl border border-brand-dark shadow-sm flex flex-col justify-between"
+                        className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm flex flex-col justify-between"
                       >
                         <div>
                           <div className="flex justify-between items-start mb-4">
                             <div>
-                              <span className="text-[10px] bg-brand-muted px-3 py-1 rounded-full border border-brand-dark text-brand-primary uppercase tracking-widest font-mono font-bold">
+                              <span className="text-[10px] bg-brand-muted dark:bg-[#1a2533] transition-colors px-3 py-1 rounded-full border border-brand-dark dark:border-white/10 transition-colors text-brand-primary dark:text-white transition-colors uppercase tracking-widest font-mono font-bold">
                                 {acc.type}
                               </span>
-                              <h4 className="text-lg font-bold text-brand-primary mt-2.5">
+                              <h4 className="text-lg font-bold text-brand-primary dark:text-white transition-colors mt-2.5">
                                 {acc.name}
                               </h4>
                             </div>
@@ -1444,12 +1445,12 @@ export default function Dashboard() {
                             </span>
                           </div>
 
-                          <div className="space-y-3 bg-brand-muted p-4 rounded-lg border border-brand-dark">
+                          <div className="space-y-3 bg-brand-muted dark:bg-[#1a2533] transition-colors p-4 rounded-lg border border-brand-dark dark:border-white/10 transition-colors">
                             <div className="flex justify-between text-xs py-1.5 border-b border-brand-dark/50">
                               <span className="text-brand-primary/65">
                                 ABA Routing Transit Number
                               </span>
-                              <span className="font-mono font-bold text-brand-primary">
+                              <span className="font-mono font-bold text-brand-primary dark:text-white transition-colors">
                                 021000021
                               </span>
                             </div>
@@ -1457,8 +1458,8 @@ export default function Dashboard() {
                               <span className="text-brand-primary/65">
                                 IBAN Ident Key
                               </span>
-                              <span className="font-mono font-bold text-brand-primary">
-                                US89 NOVA 0210 0002 4820 5
+                              <span className="font-mono font-bold text-brand-primary dark:text-white transition-colors">
+                                US89 NOVAA 0210 0002 4820 5
                               </span>
                             </div>
                             <div className="flex justify-between text-xs py-1.5">
@@ -1506,7 +1507,7 @@ export default function Dashboard() {
                 className="space-y-6"
               >
                 <div className="space-y-1">
-                  <h3 className="text-xl font-display font-semibold text-brand-primary">
+                  <h3 className="text-xl font-display font-semibold text-brand-primary dark:text-white transition-colors">
                     Transfers Transfers & payments Office payments
                   </h3>
                   <p className="text-xs text-brand-primary/85">
@@ -1517,7 +1518,7 @@ export default function Dashboard() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {/* Wire transfer desk */}
-                  <div className="bg-white p-6 rounded-xl border border-brand-dark shadow-sm">
+                  <div className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm">
                     <h4 className="font-bold text-sm uppercase tracking-wider text-brand-accent mb-4">
                       Execute Local/Domestic Wire Transfer
                     </h4>
@@ -1545,7 +1546,7 @@ export default function Dashboard() {
                           value={transferFrom}
                           title="Select source account for transfer"
                           onChange={(e) => setTransferFrom(e.target.value)}
-                          className="w-full bg-brand-muted p-3 rounded-xl border border-brand-dark text-xs text-brand-primary focus:outline-none"
+                          className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-3 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none"
                         >
                           {accounts.map((acc) => (
                             <option key={acc.id} value={acc.id}>
@@ -1563,7 +1564,7 @@ export default function Dashboard() {
                           value={transferTo}
                           title="Select target account or recipient"
                           onChange={(e) => setTransferTo(e.target.value)}
-                          className="w-full bg-brand-muted p-3 rounded-xl border border-brand-dark text-xs text-brand-primary focus:outline-none"
+                          className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-3 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none"
                         >
                           <option value="">-- Select Verified Dest --</option>
                           <option value="High-Yield Savings">
@@ -1592,7 +1593,7 @@ export default function Dashboard() {
                             placeholder="0.00"
                             value={transferAmount}
                             onChange={(e) => setTransferAmount(e.target.value)}
-                            className="w-full bg-brand-muted p-3 rounded-xl border border-brand-dark text-xs text-brand-primary font-mono focus:outline-none"
+                            className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-3 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors font-mono focus:outline-none"
                           />
                         </div>
                         <div>
@@ -1604,7 +1605,7 @@ export default function Dashboard() {
                             placeholder="e.g. loan payout"
                             value={transferMemo}
                             onChange={(e) => setTransferMemo(e.target.value)}
-                            className="w-full bg-brand-muted p-3 rounded-xl border border-brand-dark text-xs text-brand-primary focus:outline-none"
+                            className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-3 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none"
                           />
                         </div>
                       </div>
@@ -1619,7 +1620,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Bill pays desk */}
-                  <div className="bg-white p-6 rounded-xl border border-brand-dark shadow-sm">
+                  <div className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm">
                     <h4 className="font-bold text-sm uppercase tracking-wider text-brand-accent mb-4">
                       Secure Utility / Payee Remittance
                     </h4>
@@ -1647,7 +1648,7 @@ export default function Dashboard() {
                           value={billPayee}
                           title="Select service payee"
                           onChange={(e) => setBillPayee(e.target.value)}
-                          className="w-full bg-brand-muted p-3 rounded-xl border border-brand-dark text-xs text-brand-primary focus:outline-none"
+                          className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-3 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none"
                         >
                           <option value="">
                             -- Choose Registered Vendor --
@@ -1676,7 +1677,7 @@ export default function Dashboard() {
                             value={billFromAccount}
                             title="Select source account for bill payment"
                             onChange={(e) => setBillFromAccount(e.target.value)}
-                            className="w-full bg-brand-muted p-3 rounded-xl border border-brand-dark text-xs text-brand-primary focus:outline-none"
+                            className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-3 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none"
                           >
                             {accounts.map((acc) => (
                               <option key={acc.id} value={acc.id}>
@@ -1693,7 +1694,7 @@ export default function Dashboard() {
                             value={billCategory}
                             title="Select bill category"
                             onChange={(e) => setBillCategory(e.target.value)}
-                            className="w-full bg-brand-muted p-3 rounded-xl border border-brand-dark text-xs text-brand-primary focus:outline-none"
+                            className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-3 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors focus:outline-none"
                           >
                             <option value="Utilities">Utilities</option>
                             <option value="Rent">Rent</option>
@@ -1713,7 +1714,7 @@ export default function Dashboard() {
                           placeholder="0.00"
                           value={billAmount}
                           onChange={(e) => setBillAmount(e.target.value)}
-                          className="w-full bg-brand-muted p-3 rounded-xl border border-brand-dark text-xs text-brand-primary font-mono focus:outline-none"
+                          className="w-full bg-brand-muted dark:bg-[#1a2533] transition-colors p-3 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors font-mono focus:outline-none"
                         />
                       </div>
 
@@ -1741,7 +1742,7 @@ export default function Dashboard() {
                 className="space-y-6"
               >
                 <div className="space-y-1">
-                  <h3 className="text-xl font-display font-semibold text-brand-primary">
+                  <h3 className="text-xl font-display font-semibold text-brand-primary dark:text-white transition-colors">
                     Card management
                   </h3>
                   <p className="text-xs text-brand-primary/85">
@@ -1754,7 +1755,7 @@ export default function Dashboard() {
                   {cards.map((card) => (
                     <div
                       key={card.id}
-                      className="bg-white p-6 rounded-xl border border-brand-dark shadow-sm flex flex-col justify-between space-y-8 relative overflow-hidden"
+                      className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm flex flex-col justify-between space-y-8 relative overflow-hidden"
                     >
                       {card.isFrozen && (
                         <div className="absolute inset-0 bg-brand-muted/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center space-y-3">
@@ -1765,7 +1766,7 @@ export default function Dashboard() {
                           <p className="text-sm font-semibold uppercase text-red-600 tracking-widest">
                             Card Locked & Frozen
                           </p>
-                          <p className="text-xs text-brand-primary px-12 text-center font-bold">
+                          <p className="text-xs text-brand-primary dark:text-white transition-colors px-12 text-center font-bold">
                             Unfreeze this security parameter below to reactive
                             downstream transacting capabilities.
                           </p>
@@ -1798,7 +1799,7 @@ export default function Dashboard() {
                         <div className="flex justify-between items-start">
                           <div>
                             <span className="text-[10px] text-white font-mono tracking-widest">
-                              NOVA PRIVATE
+                              NOVAA PRIVATE
                             </span>
                             <p className="text-xs text-brand-muted/70 font-bold mt-1 uppercase">
                               Infinite Signature
@@ -1855,7 +1856,7 @@ export default function Dashboard() {
                       {/* Management Tools */}
                       <div className="space-y-4">
                         <div className="flex justify-between items-center pb-2 border-b border-brand-dark/70">
-                          <span className="text-xs font-bold text-brand-primary">
+                          <span className="text-xs font-bold text-brand-primary dark:text-white transition-colors">
                             Freeze Security Guard
                           </span>
                           <button
@@ -1880,7 +1881,7 @@ export default function Dashboard() {
                         {/* Limit Slider */}
                         <div className="space-y-2">
                           <div className="flex justify-between text-xs font-semibold">
-                            <span className="text-brand-primary">
+                            <span className="text-brand-primary dark:text-white transition-colors">
                               Card Limit Slider
                             </span>
                             <span className="text-brand-accent font-mono">
@@ -1898,7 +1899,7 @@ export default function Dashboard() {
                             onChange={(e) =>
                               updateCardLimit(card.id, parseInt(e.target.value))
                             }
-                            className="w-full accent-brand-accent bg-brand-dark cursor-pointer border border-brand-dark h-2 rounded-lg"
+                            className="w-full accent-brand-accent bg-brand-dark cursor-pointer border border-brand-dark dark:border-white/10 transition-colors h-2 rounded-lg"
                           />
                           <p className="text-[10px] text-brand-primary/70">
                             Change this threshold instantly to limit
@@ -1924,7 +1925,7 @@ export default function Dashboard() {
                 className="space-y-6"
               >
                 <div className="space-y-1">
-                  <h3 className="text-xl font-display font-semibold text-brand-primary">
+                  <h3 className="text-xl font-display font-semibold text-brand-primary dark:text-white transition-colors">
                     Wealth management
                   </h3>
                   <p className="text-xs text-brand-primary/85">
@@ -1935,10 +1936,10 @@ export default function Dashboard() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Automated Robo Advisor desk */}
-                  <div className="bg-white p-6 rounded-xl border border-brand-dark shadow-sm lg:col-span-2 space-y-4">
+                  <div className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm lg:col-span-2 space-y-4">
                     <h4 className="font-bold text-sm uppercase tracking-wider text-brand-accent flex items-center gap-2">
                       <Compass size={16} />
-                      <span>Nova Robo-Advisory Intelligent Portfolio</span>
+                      <span>Novaa Robo-Advisory Intelligent Portfolio</span>
                     </h4>
 
                     <p className="text-xs text-brand-primary/85 leading-relaxed">
@@ -1947,12 +1948,12 @@ export default function Dashboard() {
                       portfolio based on macroeconomic fluctuations.
                     </p>
 
-                    <div className="grid grid-cols-3 gap-4 p-4 bg-brand-muted rounded-lg border border-brand-dark text-center text-xs">
+                    <div className="grid grid-cols-3 gap-4 p-4 bg-brand-muted dark:bg-[#1a2533] transition-colors rounded-lg border border-brand-dark dark:border-white/10 transition-colors text-center text-xs">
                       <div>
                         <p className="text-brand-primary/65 uppercase text-[9px] font-bold">
                           Equity Stock Exposure
                         </p>
-                        <p className="font-extrabold text-brand-primary mt-1">
+                        <p className="font-extrabold text-brand-primary dark:text-white transition-colors mt-1">
                           75% (Global Large Cap)
                         </p>
                       </div>
@@ -1960,7 +1961,7 @@ export default function Dashboard() {
                         <p className="text-brand-primary/65 uppercase text-[9px] font-bold">
                           Fixed Income Bonds
                         </p>
-                        <p className="font-extrabold text-brand-primary mt-1">
+                        <p className="font-extrabold text-brand-primary dark:text-white transition-colors mt-1">
                           20% (Treasuries)
                         </p>
                       </div>
@@ -1968,14 +1969,14 @@ export default function Dashboard() {
                         <p className="text-brand-primary/65 uppercase text-[9px] font-bold">
                           Commodities & Cash
                         </p>
-                        <p className="font-extrabold text-brand-primary mt-1">
+                        <p className="font-extrabold text-brand-primary dark:text-white transition-colors mt-1">
                           5% (Physical Gold)
                         </p>
                       </div>
                     </div>
 
                     <div className="pt-2">
-                      <h5 className="text-xs font-bold text-brand-primary uppercase tracking-wider mb-2">
+                      <h5 className="text-xs font-bold text-brand-primary dark:text-white transition-colors uppercase tracking-wider mb-2">
                         Sandbox Automated Tickers Tracker
                       </h5>
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
@@ -1987,9 +1988,9 @@ export default function Dashboard() {
                         ].map((stock, i) => (
                           <div
                             key={i}
-                            className="p-2.5 bg-brand-muted border border-brand-dark rounded-xl"
+                            className="p-2.5 bg-brand-muted dark:bg-[#1a2533] transition-colors border border-brand-dark dark:border-white/10 transition-colors rounded-xl"
                           >
-                            <p className="font-semibold text-brand-primary text-[11px]">
+                            <p className="font-semibold text-brand-primary dark:text-white transition-colors text-[11px]">
                               {stock.symbol}
                             </p>
                             <p className="font-mono text-brand-accent font-bold text-[10px] mt-0.5">
@@ -2007,7 +2008,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Savings Calculator Goals builder */}
-                  <div className="bg-white p-6 rounded-xl border border-brand-dark shadow-sm">
+                  <div className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm">
                     <h4 className="font-bold text-sm uppercase tracking-wider text-brand-accent mb-3">
                       Goal target creator
                     </h4>
@@ -2017,7 +2018,7 @@ export default function Dashboard() {
                         <span className="text-[10px] text-brand-primary/65 font-bold uppercase">
                           Savings Portfolio Goal Name
                         </span>
-                        <p className="text-sm font-bold text-brand-primary mt-1">
+                        <p className="text-sm font-bold text-brand-primary dark:text-white transition-colors mt-1">
                           {savingsGoal.name}
                         </p>
                       </div>
@@ -2030,7 +2031,7 @@ export default function Dashboard() {
                         </p>
                       </div>
                       <div className="space-y-1.5">
-                        <div className="flex justify-between items-center text-[10px] text-brand-primary font-medium">
+                        <div className="flex justify-between items-center text-[10px] text-brand-primary dark:text-white transition-colors font-medium">
                           <span>Accumulated Cash Assets</span>
                           <span>
                             {Math.round(
@@ -2039,7 +2040,7 @@ export default function Dashboard() {
                             %
                           </span>
                         </div>
-                        <div className="w-full bg-brand-dark h-3 rounded-full overflow-hidden border border-brand-dark">
+                        <div className="w-full bg-brand-dark h-3 rounded-full overflow-hidden border border-brand-dark dark:border-white/10 transition-colors">
                           <div
                             className={`bg-brand-accent h-full rounded-full transition-all duration-500 ${getSavingsProgressWidthClass(savingsGoal.current, savingsGoal.target)}`}
                           ></div>
@@ -2067,7 +2068,7 @@ export default function Dashboard() {
                 className="space-y-6"
               >
                 <div className="space-y-1">
-                  <h3 className="text-xl font-display font-semibold text-brand-primary">
+                  <h3 className="text-xl font-display font-semibold text-brand-primary dark:text-white transition-colors">
                     Statements ledger
                   </h3>
                   <p className="text-xs text-brand-primary/75">
@@ -2076,7 +2077,7 @@ export default function Dashboard() {
                   </p>
                 </div>
 
-                <div className="bg-white p-6 rounded-xl border border-brand-dark shadow-sm">
+                <div className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm">
                   <h4 className="font-bold text-sm uppercase tracking-wider text-brand-accent mb-4">
                     Request Monthly Official PDF Statements
                   </h4>
@@ -2101,10 +2102,10 @@ export default function Dashboard() {
                     ].map((st, i) => (
                       <div
                         key={i}
-                        className="p-4 bg-brand-muted rounded-lg border border-brand-dark flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:border-brand-accent/50 transition-all text-xs"
+                        className="p-4 bg-brand-muted dark:bg-[#1a2533] transition-colors rounded-lg border border-brand-dark dark:border-white/10 transition-colors flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:border-brand-accent/50 transition-all text-xs"
                       >
                         <div className="space-y-1 text-left">
-                          <p className="font-bold text-brand-primary text-sm">
+                          <p className="font-bold text-brand-primary dark:text-white transition-colors text-sm">
                             {st.title}
                           </p>
                           <p className="text-brand-primary/60 font-mono text-[10px] font-bold">
@@ -2117,7 +2118,7 @@ export default function Dashboard() {
                               `Requested download of file statement identifying: ${st.code}. Preparing encrypted package...`,
                             )
                           }
-                          className="px-4 py-2 rounded-xl bg-white hover:bg-brand-accent/25 text-brand-primary text-xs font-bold uppercase tracking-wider transition-all border border-brand-accent/40 cursor-pointer"
+                          className="px-4 py-2 rounded-xl bg-white dark:bg-brand-secondary transition-colors hover:bg-brand-accent/25 text-brand-primary dark:text-white transition-colors text-xs font-bold uppercase tracking-wider transition-all border border-brand-accent/40 cursor-pointer"
                         >
                           Generate PDF Ledger
                         </button>
@@ -2140,7 +2141,7 @@ export default function Dashboard() {
                 className="space-y-6"
               >
                 <div className="space-y-1">
-                  <h3 className="text-xl font-display font-semibold text-brand-primary">
+                  <h3 className="text-xl font-display font-semibold text-brand-primary dark:text-white transition-colors">
                     Secure help desk
                   </h3>
                   <p className="text-xs text-brand-primary/75">
@@ -2151,11 +2152,11 @@ export default function Dashboard() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                   {/* Chat interface card */}
-                  <div className="lg:col-span-8 bg-white p-6 rounded-xl border border-brand-dark shadow-sm flex flex-col h-[28rem] justify-between">
+                  <div className="lg:col-span-8 bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm flex flex-col h-[28rem] justify-between">
                     <div>
                       <h4 className="font-bold text-xs uppercase tracking-wider text-brand-accent mb-4 flex items-center gap-2">
                         <MessageSquare size={16} />
-                        <span>NovaSecure Automated Advisor Chat</span>
+                        <span>NovaaSecure Automated Advisor Chat</span>
                       </h4>
 
                       <div className="space-y-3 h-64 overflow-y-auto pr-1 mb-4 select-text">
@@ -2169,7 +2170,7 @@ export default function Dashboard() {
                               <div
                                 className={`p-3 rounded-lg max-w-sm text-xs relative ${
                                   isAsst
-                                    ? "bg-brand-muted text-brand-primary border border-brand-dark"
+                                    ? "bg-brand-muted dark:bg-[#1a2533] transition-colors text-brand-primary dark:text-white transition-colors border border-brand-dark dark:border-white/10 transition-colors"
                                     : "bg-brand-accent text-white font-medium"
                                 }`}
                               >
@@ -2185,7 +2186,7 @@ export default function Dashboard() {
                         })}
                         {isGeneratingChat && (
                           <div className="flex justify-start">
-                            <div className="p-3 bg-brand-muted text-brand-primary rounded-lg border border-brand-dark text-xs flex items-center gap-1">
+                            <div className="p-3 bg-brand-muted dark:bg-[#1a2533] transition-colors text-brand-primary dark:text-white transition-colors rounded-lg border border-brand-dark dark:border-white/10 transition-colors text-xs flex items-center gap-1">
                               <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-bounce"></span>
                               <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-bounce [animation-delay:200ms]"></span>
                               <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-bounce [animation-delay:400ms]"></span>
@@ -2201,7 +2202,7 @@ export default function Dashboard() {
                         placeholder="Write support inquiry (e.g. transfers, card blocks)..."
                         value={chatInput}
                         onChange={(e) => setChatInput(e.target.value)}
-                        className="grow bg-brand-muted p-3 rounded-xl border border-brand-dark text-xs text-brand-primary placeholder:text-brand-primary/50 focus:outline-none"
+                        className="grow bg-brand-muted dark:bg-[#1a2533] transition-colors p-3 rounded-xl border border-brand-dark dark:border-white/10 transition-colors text-xs text-brand-primary dark:text-white transition-colors placeholder:text-brand-primary/50 focus:outline-none"
                       />
                       <button
                         type="submit"
@@ -2214,7 +2215,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Immediate Emergency Action desk */}
-                  <div className="lg:col-span-4 bg-white p-6 rounded-xl border border-brand-dark shadow-sm flex flex-col justify-between">
+                  <div className="lg:col-span-4 bg-white dark:bg-brand-secondary transition-colors p-6 rounded-xl border border-brand-dark dark:border-white/10 transition-colors shadow-sm flex flex-col justify-between">
                     <div>
                       <h4 className="font-bold text-xs uppercase tracking-wider text-rose-600 mb-3 flex items-center gap-1">
                         <ShieldAlert size={16} className="text-red-500" />
@@ -2251,12 +2252,12 @@ export default function Dashboard() {
                       </div>
                     </div>
 
-                    <div className="pt-6 border-t border-brand-dark text-xs text-center">
-                      <p className="text-brand-primary font-semibold">
+                    <div className="pt-6 border-t border-brand-dark dark:border-white/10 transition-colors text-xs text-center">
+                      <p className="text-brand-primary dark:text-white transition-colors font-semibold">
                         Registered toll-free helpline
                       </p>
                       <p className="font-bold text-brand-accent text-base mt-1">
-                        +1-800-NOVA-SAFE
+                        +1-800-NOVAA-SAFE
                       </p>
                     </div>
                   </div>

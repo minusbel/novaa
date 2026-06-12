@@ -16,25 +16,25 @@ export default function InterestRatePromos() {
   // Mystery box state
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [unlockedRate, setUnlockedRate] = useState("5.65%");
-  const [promoCode, setPromoCode] = useState("NOVA-VAULT-2026");
+  const [promoCode, setPromoCode] = useState("NOVAA-VAULT-2026");
 
   // Slider state
   const [depositAmount, setDepositAmount] = useState(25000);
 
   // Math variables
   const standardBankApy = 0.45; // 0.45% average standard bank APY
-  const novaBankApy = 5.25; // 5.25% standard premium Nova vault APY
+  const novaaBankApy = 5.25; // 5.25% standard premium Novaa vault APY
 
   const calculateEarnings = (apy: number) => {
     return Math.round(depositAmount * (apy / 100));
   };
 
   const standardEarnings = calculateEarnings(standardBankApy);
-  const novaEarnings = calculateEarnings(novaBankApy);
-  const earningsDifference = novaEarnings - standardEarnings;
+  const novaaEarnings = calculateEarnings(novaaBankApy);
+  const earningsDifference = novaaEarnings - standardEarnings;
 
   return (
-    <section className="py-24 bg-brand-light border-y border-brand-secondary/40 relative overflow-hidden select-none">
+    <section className="py-24 bg-brand-light dark:bg-brand-primary transition-colors border-y border-brand-secondary/40 relative overflow-hidden select-none">
       {/* Background Decorative Accents */}
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-brand-accent/5 rounded-full blur-3xl z-0 -translate-y-1/2"></div>
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-brand-success/5 rounded-full blur-3xl z-0"></div>
@@ -45,7 +45,7 @@ export default function InterestRatePromos() {
           <span className="inline-block py-1 px-3 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold uppercase tracking-widest mb-4">
             Exclusive Offers & Rates
           </span>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary tracking-tight leading-tight">
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary dark:text-white transition-colors tracking-tight leading-tight">
             Lock in Industry-Leading <br />
             <span className="text-brand-accent">Interest Promos</span>
           </h2>
@@ -58,14 +58,14 @@ export default function InterestRatePromos() {
         {/* Dynamic Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* LEFT: Dynamic Earnings Calculator */}
-          <div className="bg-white p-8 sm:p-10 rounded-[2.5rem] border border-brand-secondary shadow-lg flex flex-col justify-between">
+          <div className="bg-white dark:bg-brand-secondary transition-colors p-8 sm:p-10 rounded-[2.5rem] border border-brand-secondary shadow-lg flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-brand-accent/15 flex items-center justify-center text-brand-accent">
                   <Calculator size={22} />
                 </div>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-brand-primary">
+                  <h3 className="text-lg sm:text-xl font-bold text-brand-primary dark:text-white transition-colors">
                     Growth Calculator
                   </h3>
                   <p className="text-xs text-brand-primary/60 font-semibold uppercase">
@@ -92,7 +92,7 @@ export default function InterestRatePromos() {
                   step="5000"
                   value={depositAmount}
                   onChange={(e) => setDepositAmount(Number(e.target.value))}
-                  className="w-full h-2 bg-brand-muted rounded-lg appearance-none cursor-ew-resize accent-brand-accent"
+                  className="w-full h-2 bg-brand-muted dark:bg-[#1a2533] transition-colors rounded-lg appearance-none cursor-ew-resize accent-brand-accent"
                   aria-label="Estimated deposit amount slider"
                   title="Deposit amount"
                 />
@@ -120,10 +120,10 @@ export default function InterestRatePromos() {
                 <div className="bg-brand-accent/10 p-5 rounded-2xl border border-brand-accent/25 relative overflow-hidden">
                   <div className="absolute -top-1 -right-1 w-8 h-8 bg-brand-accent/10 rounded-full blur-md"></div>
                   <p className="text-[10px] font-extrabold text-brand-accent uppercase tracking-wider">
-                    Nova Vault (5.25% APY)
+                    Novaa Vault (5.25% APY)
                   </p>
                   <p className="text-xl font-display font-black text-brand-accent mt-2">
-                    ${novaEarnings.toLocaleString()}
+                    ${novaaEarnings.toLocaleString()}
                   </p>
                   <p className="text-[9px] font-bold text-brand-accent/80 mt-1">
                     Estimated Annual Interest
@@ -136,7 +136,7 @@ export default function InterestRatePromos() {
             <div className="mt-8 pt-6 border-t border-brand-secondary flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <p className="text-xs text-brand-primary/70 font-semibold">
-                  With a Nova Vault, you earn an extra:
+                  With a Novaa Vault, you earn an extra:
                 </p>
                 <p className="text-2xl font-bold text-emerald-600 flex items-center gap-1.5 font-mono mt-1">
                   <Sparkles size={20} className="animate-pulse shrink-0" />
@@ -181,7 +181,7 @@ export default function InterestRatePromos() {
                       Rate Booster
                     </h3>
                     <p className="text-white/60 text-xs px-6 max-w-sm leading-relaxed">
-                      Nova Finance is offering direct rate upgrades. Break the
+                      Novaa is offering direct rate upgrades. Break the
                       seal on this secure voucher card to claim a boosted
                       savings rate yield.
                     </p>
@@ -209,7 +209,7 @@ export default function InterestRatePromos() {
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
-                  className="bg-white p-8 sm:p-10 rounded-[2.5rem] border-2 border-emerald-500 shadow-2xl flex flex-col justify-between min-h-88 relative overflow-hidden"
+                  className="bg-white dark:bg-brand-secondary transition-colors p-8 sm:p-10 rounded-[2.5rem] border-2 border-emerald-500 shadow-2xl flex flex-col justify-between min-h-88 relative overflow-hidden"
                 >
                   {/* Sparkling party bits decoration */}
                   <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl"></div>
@@ -244,7 +244,7 @@ export default function InterestRatePromos() {
                         <p className="text-[8px] uppercase font-bold text-brand-primary/40">
                           Promo Claim Token
                         </p>
-                        <p className="font-mono text-xs sm:text-sm font-black text-brand-primary uppercase tracking-widest">
+                        <p className="font-mono text-xs sm:text-sm font-black text-brand-primary dark:text-white transition-colors uppercase tracking-widest">
                           {promoCode}
                         </p>
                       </div>
@@ -257,7 +257,7 @@ export default function InterestRatePromos() {
                   <div className="mt-6 pt-4 border-t border-brand-secondary flex gap-3">
                     <button
                       onClick={() => setIsUnlocked(false)}
-                      className="px-4 py-3 rounded-full border border-brand-secondary text-brand-primary text-xs font-bold uppercase hover:bg-brand-muted transition-colors cursor-pointer"
+                      className="px-4 py-3 rounded-full border border-brand-secondary text-brand-primary dark:text-white transition-colors text-xs font-bold uppercase hover:bg-brand-muted transition-colors cursor-pointer"
                     >
                       Reset Seal
                     </button>

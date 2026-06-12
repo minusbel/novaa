@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { useAuth } from './context/AuthContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -25,7 +26,7 @@ function AppShell() {
   const isDashboard = location.pathname === '/dashboard';
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-brand-primary bg-brand-light selection:bg-brand-accent/20 selection:text-brand-primary">
+    <div className="min-h-screen flex flex-col font-sans bg-brand-light dark:bg-brand-navy text-brand-primary dark:text-white">
       <Navbar />
       <main className="flex-grow">
         <Routes>
@@ -55,10 +56,12 @@ function AppShell() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <AppShell />
-      </BrowserRouter>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <AppShell />
+        </BrowserRouter>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }

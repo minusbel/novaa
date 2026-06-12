@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Landmark, Twitter, Linkedin, Instagram, Facebook } from 'lucide-react';
+import NovaaLogo from '../NovaaLogo';
 
 export default function Footer() {
   const location = useLocation();
@@ -25,13 +26,8 @@ export default function Footer() {
           
           {/* Brand & Newsletter */}
           <div className="lg:col-span-2 space-y-6">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-brand-accent flex items-center justify-center text-white shadow-md border border-brand-secondary/30">
-                <Landmark size={22} className="text-white" />
-              </div>
-              <span className="font-display font-medium text-2xl tracking-tight text-white">
-                Nova<span className="text-brand-accent font-black">Finance</span>
-              </span>
+            <Link to="/" className="flex items-center group">
+              <NovaaLogo className="text-3xl text-white" iconSize={36} />
             </Link>
             <p className="text-white/70 text-sm leading-relaxed max-w-sm font-medium">
               Empowering your financial journey with modern tools, exceptional security, and a premium banking experience tailored for your future.
@@ -73,7 +69,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/50 text-xs text-center md:text-left font-semibold">
-            &copy; {new Date().getFullYear()} Nova Finance Inc. All rights reserved. <br className="md:hidden" />
+            &copy; {new Date().getFullYear()} Novaa Inc. All rights reserved. <br className="md:hidden" />
             <span className="inline-block mt-2 md:mt-0 md:ml-2">Member FDIC. Equal Housing Lender.</span>
           </p>
           

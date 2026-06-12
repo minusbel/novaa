@@ -33,7 +33,7 @@ export default function Business() {
       </section>
 
       {/* Feature section */}
-      <section className="py-24 bg-brand-light">
+      <section className="py-24 bg-brand-light dark:bg-brand-primary transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -41,8 +41,8 @@ export default function Business() {
               { title: "Payment Processing", desc: "Accept payments globally with industry-leading low transaction rates." },
               { title: "Treasury Management", desc: "Optimize your cash flow and maximize yields on idle corporate funds." }
             ].map((feature, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-brand-primary/5">
-                <h3 className="text-xl font-bold text-brand-primary mb-3">{feature.title}</h3>
+              <div key={i} className="bg-white dark:bg-brand-secondary transition-colors p-8 rounded-2xl shadow-sm border border-brand-primary/5">
+                <h3 className="text-xl font-bold text-brand-primary dark:text-white transition-colors mb-3">{feature.title}</h3>
                 <p className="text-brand-secondary/80">{feature.desc}</p>
               </div>
             ))}

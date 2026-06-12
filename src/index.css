@@ -1,18 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ======================================================
+   NOVAA DESIGN TOKENS — Palette D: Deep Space & Emerald
+
+   LIGHT MODE:
+     background  → brand-light  (#F8FAFC)
+     surfaces    → white / brand-muted (#F1F5F9)
+     headings    → brand-primary (#0D1117)
+     body text   → brand-secondary (#374151)
+     borders     → brand-dark (#CBD5E1)
+     accent      → brand-accent (#059669)
+
+   DARK MODE (via dark: utilities):
+     background  → brand-navy (#0B0E14)
+     surfaces    → brand-primary (#0D1117) / brand-secondary (#161B22)
+     headings    → white
+     body text   → white/70
+     borders     → white/10
+     accent      → #00E676 (electric emerald, brighter for contrast)
+   ====================================================== */
+
 @theme {
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Cormorant Garamond", Georgia, serif;
 
-  --color-brand-primary: #0f1923;      /* Near-black — headlines, nav, primary text */
-  --color-brand-secondary: #1e2d3d;    /* Dark slate — card surfaces, secondary backgrounds */
-  --color-brand-accent: #4a7fa5;       /* Steel blue — the ONE accent, used sparingly */
-  --color-brand-navy: #0a1118;         /* Deepest dark — footer, hero bg */
-  --color-brand-light: #f5f6f7;        /* Cool off-white — page background */
-  --color-brand-muted: #eaecee;        /* Cool surface — panels, inputs */
-  --color-brand-dark: #d0d5db;         /* Mid-grey — borders, dividers */
-  --color-brand-success: #2d6a4f;      /* Muted forest green — success only */
+  --color-brand-primary:   #0D1117;
+  --color-brand-secondary: #374151;
+  --color-brand-accent:    #059669;
+  --color-brand-navy:      #0B0E14;
+  --color-brand-light:     #F8FAFC;
+  --color-brand-muted:     #F1F5F9;
+  --color-brand-dark:      #CBD5E1;
+  --color-brand-success:   #059669;
+  --color-brand-surface:   #161B22;
 }
 
 body {
@@ -21,4 +43,28 @@ body {
   font-family: var(--font-sans);
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode body override */
+.dark body {
+  background-color: var(--color-brand-navy);
+  color: #F8FAFC;
+}
+
+/* Smooth transitions on all interactive elements */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: ease;
+  transition-duration: 200ms;
+}
+
+/* Override for motion/animation elements — don't inherit transition-all on transforms */
+[class*="motion"] {
+  transition-property: opacity, transform;
+}
+
+/* Dark accent glow */
+.dark .glow-accent {
+  box-shadow: 0 0 24px rgba(0, 230, 118, 0.18);
 }
