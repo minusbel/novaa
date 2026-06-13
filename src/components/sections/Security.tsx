@@ -29,7 +29,7 @@ export default function Security() {
                  </div>
                  <div>
                    <p className="text-sm font-bold text-brand-primary dark:text-white transition-colors">Bank-Grade</p>
-                   <p className="text-xs text-brand-secondary dark:text-brand-light transition-colors">256-bit Encryption</p>
+                   <p className="text-xs text-brand-primary/70 dark:text-brand-light transition-colors">256-bit Encryption</p>
                  </div>
               </div>
             </motion.div>
@@ -46,7 +46,7 @@ export default function Security() {
               <h2 className="text-3xl md:text-5xl font-display font-bold text-brand-primary dark:text-white transition-colors mb-4">
                 Security At Every Step
               </h2>
-              <p className="text-brand-secondary/80 text-lg mb-10 leading-relaxed">
+              <p className="text-brand-primary/80 dark:text-white/80 text-lg mb-10 leading-relaxed">
                 Your peace of mind is our priority. We employ industry-leading security measures to ensure your money and data are always protected.
               </p>
 
@@ -62,11 +62,11 @@ export default function Security() {
                     whileHover={{ scale: 1.02 }}
                     className="bg-white dark:bg-brand-secondary transition-colors p-6 rounded-2xl shadow-sm border border-brand-primary/5"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-brand-light dark:bg-brand-primary transition-colors flex items-center justify-center text-brand-primary dark:text-white transition-colors mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-brand-light dark:bg-brand-primary transition-colors flex items-center justify-center text-brand-primary dark:text-white mb-4">
                       <item.icon size={24} />
                     </div>
                     <h4 className="text-lg font-bold text-brand-primary dark:text-white transition-colors mb-2">{item.title}</h4>
-                    <p className="text-sm text-brand-secondary/70 leading-relaxed">{item.desc}</p>
+                    <p className="text-sm text-brand-primary/70 dark:text-white/70 leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
