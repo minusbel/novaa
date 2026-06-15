@@ -16,13 +16,9 @@
     <script>
       (function() {
         try {
-          var localTheme = localStorage.getItem('novaa_theme');
-          var isDark = localTheme === 'dark' || (!localTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          if (isDark) {
-            document.documentElement.classList.add('dark');
-            document.body && (document.body.style.backgroundColor = '#0B0E14');
-            document.body && (document.body.style.color = '#F8FAFC');
-          }
+          document.documentElement.classList.add('dark');
+          document.body && (document.body.style.backgroundColor = '#0B0E14');
+          document.body && (document.body.style.color = '#F8FAFC');
         } catch (e) {}
       })();
     </script>

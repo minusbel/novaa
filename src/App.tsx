@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -24,6 +25,10 @@ function AppShell() {
   const { isLoggedIn } = useAuth();
   const location = useLocation();
   const isDashboard = location.pathname === '/dashboard';
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-brand-light dark:bg-brand-navy text-brand-primary dark:text-white">

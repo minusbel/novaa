@@ -47,7 +47,6 @@ import {
   Menu
 } from "lucide-react";
 import NovaaLogo from '../components/NovaaLogo';
-import ThemeToggle from '../components/ThemeToggle';
 
 // Monthly interactive points for the adjustable chart
 interface ChartDataPoint {
@@ -616,7 +615,6 @@ export default function Dashboard() {
             </div>
 
             <div className="flex items-center gap-3 self-stretch sm:self-auto relative">
-              <ThemeToggle className="text-brand-primary dark:text-white transition-colors dark:text-brand-light hover:bg-brand-muted dark:hover:bg-brand-secondary" />
               <div className="relative">
                 <button
                   onClick={() => setShowNotifications(!showNotifications)}

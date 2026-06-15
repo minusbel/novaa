@@ -1,28 +1,37 @@
-import { motion, useInView, animate } from 'motion/react';
+import { motion, animate } from 'motion/react';
 import { Shield, Users, Clock, Globe } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 function Counter({ from = 0, to, duration = 2, prefix = '', suffix = '' }: { from?: number, to: number, duration?: number, prefix?: string, suffix?: string }) {
   const nodeRef = useRef<HTMLHeadingElement>(null);
-  const inView = useInView(nodeRef, { once: true, margin: "0px 0px -50px 0px" });
 
   useEffect(() => {
-    if (inView && nodeRef.current) {
-      const controls = animate(from, to, {
-        duration: duration,
-        ease: "easeOut",
-        onUpdate(value) {
-           if (nodeRef.current) {
-             const formatted = Math.floor(value).toLocaleString();
-             nodeRef.current.textContent = `${prefix}${formatted}${suffix}`;
-           }
-        }
-      });
-      return () => controls.stop();
-    }
-  }, [from, to, duration, inView, prefix, suffix]);
+    if (!nodeRef.current) return;
 
-  return <h3 ref={nodeRef} className="text-2xl md:text-3xl font-display font-bold text-white mb-2">{prefix}{from}{suffix}</h3>;
+    const controls = animate(from, to, {
+      duration,
+      ease: 'easeOut',
+      onUpdate(value) {
+        if (!nodeRef.current) return;
+        const formatted = Math.floor(value).toLocaleString();
+        nodeRef.current.textContent = `${prefix}${formatted}${suffix}`;
+      },
+    });
+
+    return () => controls.stop();
+  }, [from, to, duration, prefix, suffix]);
+
+  return (
+    <motion.h3
+      ref={nodeRef}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+      className="mb-2 text-2xl font-display font-bold text-white md:text-3xl"
+    >
+      {prefix}{from}{suffix}
+    </motion.h3>
+  );
 }
 
 export default function Trust() {
