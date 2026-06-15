@@ -37,6 +37,17 @@
   --color-brand-surface:   #161B22;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--color-brand-light);
   color: var(--color-brand-primary);
@@ -44,6 +55,7 @@ body {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 /* Dark mode body override */
