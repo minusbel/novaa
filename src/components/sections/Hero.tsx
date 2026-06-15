@@ -4,7 +4,7 @@ import { ArrowRight, ShieldCheck, TrendingUp, CreditCard, Bell } from 'lucide-re
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100dvh] flex items-center overflow-hidden bg-brand-navy pt-[64px] sm:pt-[72px]">
+    <section className="relative w-full min-h-[calc(100dvh-64px)] sm:min-h-[calc(100dvh-72px)] flex items-center overflow-hidden bg-brand-navy pt-[64px] sm:pt-[72px]">
 
       {/* Subtle grid — institutional texture, not decorative */}
       <div
@@ -18,7 +18,7 @@ export default function Hero() {
       {/* Restrained glow — bottom left only */}
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-accent/6 rounded-full blur-[6rem] pointer-events-none z-0" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-10 sm:py-16 lg:py-24">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 xl:px-16 relative z-10 w-full py-10 sm:py-16 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
 
           {/* ── Left column: content ── */}
@@ -26,6 +26,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="min-w-0 lg:px-6 xl:px-10"
           >
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-8">
@@ -73,7 +74,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
-            className="relative flex justify-center lg:justify-end min-w-0"
+            className="relative flex justify-center lg:justify-end min-w-0 px-4 sm:px-6 lg:px-6 xl:px-10"
           >
             {/* Outer glow behind the card */}
 
