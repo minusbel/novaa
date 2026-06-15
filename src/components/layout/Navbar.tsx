@@ -26,26 +26,27 @@ export default function Navbar() {
 
   if (location.pathname === '/dashboard') return null;
 
-  // Pages with light backgrounds that need light navbar
-  const lightPages = ['/personal', '/business', '/loans', '/investments', '/resources'];
+  // All pages that use a light navbar when theme is light
+  // '/' is now included — hero is light in light mode, dark in dark mode
+  const lightPages = ['/', '/personal', '/business', '/loans', '/investments', '/resources'];
   const isLightPage = lightPages.includes(location.pathname);
-  
-  // Determine navbar styling based on page context and theme
+
+  // Determine navbar styling based on page and theme
   const shouldUseLightNavbar = isLightPage && theme === 'light' && !isScrolled;
   const textColorClass = shouldUseLightNavbar ? 'text-brand-primary' : 'text-white';
   const textMutedClass = shouldUseLightNavbar ? 'text-brand-primary/60' : 'text-white/50';
-  const borderColorClass = shouldUseLightNavbar ? 'border-brand-secondary/10' : 'border-white/8';
-  const bgColorClass = isScrolled 
-    ? (isLightPage && theme === 'light' ? 'bg-brand-light' : 'bg-brand-primary/98')
+  const borderColorClass = shouldUseLightNavbar ? 'border-brand-dark/20' : 'border-white/8';
+  const bgColorClass = isScrolled
+    ? (isLightPage && theme === 'light' ? 'bg-brand-light/98' : 'bg-brand-primary/98')
     : 'bg-transparent';
 
   const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Personal', href: '/personal' },
-    { label: 'Business', href: '/business' },
-    { label: 'Loans', href: '/loans' },
+    { label: 'Home',        href: '/' },
+    { label: 'Personal',    href: '/personal' },
+    { label: 'Business',    href: '/business' },
+    { label: 'Loans',       href: '/loans' },
     { label: 'Investments', href: '/investments' },
-    { label: 'Resources', href: '/resources' },
+    { label: 'Resources',   href: '/resources' },
   ];
 
   const isActive = (href: string) => location.pathname === href;
@@ -62,9 +63,9 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link to="/" className="flex items-center group">
-              <NovaaLogo 
+              <NovaaLogo
                 className={`text-xl ${shouldUseLightNavbar ? 'text-brand-primary' : 'text-white'}`}
-                iconSize={24} 
+                iconSize={28}
               />
             </Link>
 
@@ -119,31 +120,37 @@ export default function Navbar() {
                   </Link>
                   <Link
                     to="/login"
-                    className={`ml-2 px-5 py-2 rounded-sm ${
-                      shouldUseLightNavbar
-                        ? 'bg-brand-accent text-white hover:bg-brand-accent/90'
-                        : 'bg-brand-accent text-white hover:bg-brand-accent/90'
-                    } text-sm font-normal transition-all tracking-wide`}
+                    className="ml-2 px-5 py-2 rounded-sm bg-brand-accent text-white text-sm font-normal hover:bg-brand-accent/90 transition-all tracking-wide"
                   >
                     Open Account
                   </Link>
                 </>
               )}
-              <div className={`ml-2 pl-2 ${shouldUseLightNavbar ? 'border-l border-brand-primary/10' : 'border-l border-white/10'} flex items-center`}>
-                <ThemeToggle className={shouldUseLightNavbar ? 'text-brand-primary hover:bg-brand-primary/10' : 'text-white hover:bg-white/10'} />
+              <div className={`ml-2 pl-2 border-l ${
+                shouldUseLightNavbar ? 'border-brand-dark/20' : 'border-white/10'
+              } flex items-center`}>
+                <ThemeToggle className={
+                  shouldUseLightNavbar
+                    ? 'text-brand-primary hover:bg-brand-primary/8'
+                    : 'text-white hover:bg-white/10'
+                } />
               </div>
             </div>
 
             {/* Mobile Toggle & Theme */}
             <div className="md:hidden flex items-center gap-2">
-              <ThemeToggle className={shouldUseLightNavbar ? 'text-brand-primary hover:bg-brand-primary/10' : 'text-white hover:bg-white/10'} />
+              <ThemeToggle className={
+                shouldUseLightNavbar
+                  ? 'text-brand-primary hover:bg-brand-primary/8'
+                  : 'text-white hover:bg-white/10'
+              } />
               <button
-              className={`md:hidden p-2 ${textMutedClass} hover:${textColorClass} transition-colors`}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation"
-            >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
+                className={`p-2 ${textMutedClass} hover:${textColorClass} transition-colors`}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle navigation"
+              >
+                {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
             </div>
           </div>
         </div>
@@ -165,10 +172,10 @@ export default function Navbar() {
                   <Link
                     key={link.label}
                     to={link.href}
-                    className={`flex items-center px-4 py-3 text-sm rounded-sm transition-colors ${
+                    className={`flex items-center px-4 py-3 text-sm rounded-sm transition-colors border-l-2 ${
                       isActive(link.href)
-                        ? `${shouldUseLightNavbar ? 'text-brand-primary bg-brand-primary/6' : 'text-white bg-white/6'} ${shouldUseLightNavbar ? 'border-l-2 border-brand-accent' : 'border-l-2 border-brand-accent'}`
-                        : `${shouldUseLightNavbar ? 'text-brand-primary/55 hover:text-brand-primary hover:bg-brand-primary/4' : 'text-white/55 hover:text-white hover:bg-white/4'}`
+                        ? `border-brand-accent ${shouldUseLightNavbar ? 'text-brand-primary bg-brand-primary/5' : 'text-white bg-white/6'}`
+                        : `border-transparent ${shouldUseLightNavbar ? 'text-brand-primary/55 hover:text-brand-primary hover:bg-brand-primary/4' : 'text-white/55 hover:text-white hover:bg-white/4'}`
                     }`}
                   >
                     {link.label}
